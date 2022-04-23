@@ -1,6 +1,11 @@
 package com.bookshare.app;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ReturnRequest extends BorrowRequest{
+	@Id
 	private int returnRequestId;
 	private int penalty;
 	private String status;
@@ -24,11 +29,11 @@ public class ReturnRequest extends BorrowRequest{
 		this.status = status;
 	}
 	
-	public void calculatePenalty() {
-		return;
-	}
-	
-	public void imposePenalty() {
-		return;
-	}
+//	public void calculatePenalty() {
+//		return;
+//	}
+//	
+//	public void imposePenalty() {
+//		return;
+//	}
 }

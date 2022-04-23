@@ -1,6 +1,11 @@
 package com.bookshare.app;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ExtendRequest extends BorrowRequest{
+	@Id
 	private int extendRequestId;
 	private int extensionTime;
 	private String status;
@@ -25,8 +30,8 @@ public class ExtendRequest extends BorrowRequest{
 	}
 	
 	
-	public void changeDuration() {
-		return;
-	}
+//	public void changeDuration() {
+//		return;
+//	}
 	
 }

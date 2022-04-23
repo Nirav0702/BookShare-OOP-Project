@@ -1,8 +1,12 @@
 package com.bookshare.app;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
 public class BorrowRequest {
+	@Id
 	private int borrowRequestId;
 	private int bookId;
 	private int ownerId;
@@ -61,19 +65,19 @@ public class BorrowRequest {
 		this.status = status;
 	}
 	
-	public void approveRequest() {
-		return;
-	}
-	
-	public void declineRequest() {
-		return;
-	}
-	
-	public void cancelRequest() {
-		return;
-	}
-	
-	public void completeRequest() {
-		return;
-	}
+//	public void approveRequest() {
+//		return;
+//	}
+//	
+//	public void declineRequest() {
+//		return;
+//	}
+//	
+//	public void cancelRequest() {
+//		return;
+//	}
+//	
+//	public void completeRequest() {
+//		return;
+//	}
 }

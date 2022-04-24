@@ -19,6 +19,12 @@ public class WebpageController
 	@RequestMapping("/")
 	public String firstPage() 
 	{
+		Account ac1 = new Account(1,  "Nirav1","parmar","9999999999","nirav@g.com","Gujarat","Admin");
+		accrepo.save(ac1);
+		
+		Account ac2 = new Account(2, "Nairr", "nair", "8888888888", "demon@g.com","Kerela","User");
+		accrepo.save(ac2);
+		
 		return "firstpage.jsp";
 	}
 	
@@ -37,7 +43,27 @@ public class WebpageController
 	@RequestMapping("/addUser")
 	public String addUser(Account account) 
 	{
+		account.setUserType("User");
 		accrepo.save(account);
 		return "firstpage.jsp";
+	}
+	
+	@RequestMapping("/userHome")
+	public String userHome(@RequestParam("uname")String userName, @RequestParam("psw")String password) 
+	{
+
+		
+		Account ac = accrepo.findByUserName(userName);
+		
+		if(ac == null) {
+			return "login-invalid.jsp";
+		} else {
+			if(ac.getPassword().equals(password)) {
+				return "dashboard.jsp";
+			} else {
+				return "login-invalid.jsp";
+			}
+			
+		}
 	}
 }

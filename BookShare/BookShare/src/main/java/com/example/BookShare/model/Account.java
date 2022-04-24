@@ -6,7 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class Account 
 {
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	 private int userId;
 	 private String userName;
 	 private String password;
@@ -14,6 +16,20 @@ public class Account
 	 private String email;
 	 private String address;
 	 private String userType;
+	 
+	 public Account() {};
+	 public Account(int userId, String userName, String password, String phoneNumber, String email, String address,
+				String userType) {
+			super();
+			this.userId = userId;
+			this.userName = userName;
+			this.password = password;
+			this.phoneNumber = phoneNumber;
+			this.email = email;
+			this.address = address;
+			this.userType = userType;
+		}
+	 
 	public int getUserId() {
 		return userId;
 	}

@@ -10,5 +10,5 @@ import com.example.BookShare.model.Account;
 
 public interface AccountRepo extends CrudRepository<Account, Integer>
 {
-
+  Account findByUserName(String userName);
 }

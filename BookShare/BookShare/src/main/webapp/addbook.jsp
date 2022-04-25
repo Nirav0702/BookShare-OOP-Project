@@ -14,6 +14,7 @@
 	    <input type="text" placeholder="Enter BookPublisher;" name="bookPublisher" required>
 	    <input type="number" placeholder="Enter Book Year" name="bookYear" required>
 	    <input type="text" placeholder="Enter BookEdition" name="bookEdition" required>
+	    <input type="hidden" id="custId" name="userName" value=${userName}>
 		<button type="submit">Add Book</button>
 
 	</form>

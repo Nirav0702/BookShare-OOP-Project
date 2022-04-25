@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List" %>
 <%@page import="com.example.BookShare.model.Book" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,32 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<ul>
-		<c:if test="${not empty bookList}">
-				    <c:forEach var="listitem" items="${bookList}">
-				       ${listitem}
-					</c:forEach>-
-		</c:if>
-	</ul>
-	
-	
-	<table border="1"> 
-		<thead> 
-			<tr> 
-				<th>#</th> 
-				<th>User Name</th> 
-				<th>Password</th> 
-				<th>Email</th> 
-				<th>Display Name</th> 
-			</tr> 
-		</thead> 
-		<tbody> 
-			
-			<tr> 
-				 
-			</tr> 
-			
-		</tbody> 
-	</table>
+	<c:forTokens items = "${bookList}" delims="," var = "book">
+         <c:out value = "${book}"/><p>
+      </c:forTokens>
 </body>
 </html>

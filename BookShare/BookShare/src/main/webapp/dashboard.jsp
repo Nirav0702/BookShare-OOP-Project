@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<h1>DASHBOARD</h1>
+	<input type="hidden" id="custId" name="userName" value=${userName}>
+	<button type="submit">Add a book</button>
 </body>
 </html>

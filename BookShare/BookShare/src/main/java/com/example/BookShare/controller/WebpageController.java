@@ -18,6 +18,7 @@ public class WebpageController
 	@Autowired
 	AccountRepo accrepo;
 	BookRepo bookrepo;
+	WalletRepo walletrepo;
 	
 	@RequestMapping("/")
 	public String firstPage() 
@@ -77,6 +78,40 @@ public class WebpageController
 		System.out.println(userName);
 		ModelAndView modelAndView = new ModelAndView("addbook.jsp");
 	    modelAndView.addObject("userName", userName);
+	    return modelAndView;
+	}
+	
+	@RequestMapping("/userprofile")
+	public ModelAndView userProfilePage(@RequestParam("userName")String userName) 
+	{
+		Account ac = accrepo.findByUserName(userName);
+		ModelAndView modelAndView = new ModelAndView("userprofile.jsp");
+	    modelAndView.addObject("userName", ac.getUserName());
+	    modelAndView.addObject("userEmail", ac.getEmail());
+	    modelAndView.addObject("userAddress",ac.getAddress() );
+	    modelAndView.addObject("userPhoneNumber", ac.getPhoneNumber());
+	    return modelAndView;
+	}
+	
+//	@RequestMapping("/userwallet")
+//	public ModelAndView userWalletPage(@RequestParam("userName")String userName) 
+//	{
+//		Wallet wa = walletrepo.findByUserName(userName);
+//		ModelAndView modelAndView = new ModelAndView("userprofile.jsp");
+//	    modelAndView.addObject("userName", wa.getUserName());
+//	    modelAndView.addObject("balance", wa.getBalance());
+//	    modelAndView.addObject("moneyOwed",wa.getMoneyOwed());
+//	    modelAndView.addObject("totalDues", wa.getTotalDues());
+//	    return modelAndView;
+//	}
+	
+	
+	@RequestMapping("/searchbook")
+	public ModelAndView searchBookPage(@RequestParam("bookTitle")String bookTitle) 
+	{
+		List<Book> b = bookrepo.findAllByBookTitle(bookTitle);
+		ModelAndView modelAndView = new ModelAndView("searchbook.jsp");
+	    modelAndView.addObject("bookList", b);
 	    return modelAndView;
 	}
 	

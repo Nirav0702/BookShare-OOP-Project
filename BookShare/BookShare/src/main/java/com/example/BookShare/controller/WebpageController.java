@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.BookShare.dao.AccountRepo;
+import com.example.BookShare.dao.BookRepo;
 import com.example.BookShare.model.Account;
+import com.example.BookShare.model.Book;
 
 @Controller
 public class WebpageController 
@@ -50,26 +52,33 @@ public class WebpageController
 	}
 	
 	@RequestMapping("/userHome")
-	public String userHome(@RequestParam("uname")String userName, @RequestParam("psw")String password) 
+	public ModelAndView userHome(@RequestParam("uname")String userName, @RequestParam("psw")String password) 
 	{
 
 		
 		Account ac = accrepo.findByUserName(userName);
 		
 		if(ac == null) {
-			return "login-invalid.jsp";
+			return new ModelAndView("login-invalid.jsp");
 		} else {
 			if(ac.getPassword().equals(password)) {
-				return "dashboard.jsp";
+				ModelAndView modelAndView = new ModelAndView("dashboard.jsp");
+			    modelAndView.addObject("userName", userName);
+			    return modelAndView;
 			} else {
-				return "login-invalid.jsp";
+				return new ModelAndView("login-invalid.jsp");
 			}
 			
 		}
 	}
 	@RequestMapping("/xyz")
-	public String xyz() 
+	public ModelAndView xyz(@RequestParam("userName")String userName) 
 	{
-		return "addbook.jsp";
+		System.out.println(userName);
+		ModelAndView modelAndView = new ModelAndView("addbook.jsp");
+	    modelAndView.addObject("userName", userName);
+	    return modelAndView;
 	}
+	
+	
 }

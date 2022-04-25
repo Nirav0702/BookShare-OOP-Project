@@ -3,14 +3,19 @@ package com.example.BookShare.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.BookShare.dao.AccountRepo;
 import com.example.BookShare.dao.BookRepo;
+import com.example.BookShare.dao.WalletRepo;
 import com.example.BookShare.model.Account;
 import com.example.BookShare.model.Book;
+import com.example.BookShare.model.Wallet;
 
 @Controller
 public class WebpageController 
@@ -49,6 +54,14 @@ public class WebpageController
 	{
 		account.setUserType("User");
 		accrepo.save(account);
+//		Wallet wallet = new Wallet();
+//		wallet.setUserName(account.getUserName());
+//		wallet.setBalance(0);
+//		wallet.setMoneyOwed(0);
+//		wallet.setTotalDues(0);
+//		wallet.setBookId(0);
+//		walletrepo.save(wallet);
+//		System.out.println("Wallet Created");
 		return "firstpage.jsp";
 	}
 	
@@ -75,7 +88,6 @@ public class WebpageController
 	@RequestMapping("/xyz")
 	public ModelAndView xyz(@RequestParam("userName")String userName) 
 	{
-		System.out.println(userName);
 		ModelAndView modelAndView = new ModelAndView("addbook.jsp");
 	    modelAndView.addObject("userName", userName);
 	    return modelAndView;
@@ -106,14 +118,30 @@ public class WebpageController
 //	}
 	
 	
-	@RequestMapping("/searchbook")
-	public ModelAndView searchBookPage(@RequestParam("bookTitle")String bookTitle) 
+	
+	
+	@RequestMapping("/toChangePass")
+	public ModelAndView toChangePass(@RequestParam("userName")String userName) 
 	{
-		List<Book> b = bookrepo.findAllByBookTitle(bookTitle);
-		ModelAndView modelAndView = new ModelAndView("searchbook.jsp");
-	    modelAndView.addObject("bookList", b);
+		ModelAndView modelAndView = new ModelAndView("changepass.jsp");
+	    modelAndView.addObject("userName", userName);
 	    return modelAndView;
 	}
 	
+	@RequestMapping("/changePass")
+	public ModelAndView userProfilePage(@RequestParam("userName")String userName, @RequestParam("userPass")String userPass, @RequestParam("userPassConfirm")String userPassConfirm) 
+	{
+		Account ac = accrepo.findByUserName(userName);
+		if(userPass == userPassConfirm) {
+			ac.setPassword(userPassConfirm);
+		}
+//		accrepo.saveOrUpdate(ac);
+		ModelAndView modelAndView = new ModelAndView("userprofile.jsp");
+	    modelAndView.addObject("userName", ac.getUserName());
+	    modelAndView.addObject("userEmail", ac.getEmail());
+	    modelAndView.addObject("userAddress",ac.getAddress() );
+	    modelAndView.addObject("userPhoneNumber", ac.getPhoneNumber());
+	    return modelAndView;
+	}
 	
 }

@@ -15,6 +15,7 @@ public class WebpageController
 {
 	@Autowired
 	AccountRepo accrepo;
+	BookRepo bookrepo;
 	
 	@RequestMapping("/")
 	public String firstPage() 
@@ -65,5 +66,10 @@ public class WebpageController
 			}
 			
 		}
+	}
+	@RequestMapping("/xyz")
+	public String xyz() 
+	{
+		return "addbook.jsp";
 	}
 }

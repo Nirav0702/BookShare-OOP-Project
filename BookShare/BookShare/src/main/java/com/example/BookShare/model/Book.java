@@ -1,43 +1,50 @@
 package com.example.BookShare.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.servlet.ModelAndView;
 
 @Entity
 public class Book {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int bookId;
-	private int borrowerId;
-	private int ownerId;
+	private String borrowerName;
+	private String ownerName;
 	private String bookAuthor;
 	private String bookPublisher;
 	private String bookEdition;
 	private String bookYear;
 	private String bookTitle;
 	private boolean availability;
-	//private DateTimeFormat timeBorrowed;
-	//private DateTimeFormat timereturned;
+	private String timeBorrowed;
+	private String timereturned;
+	public Book() {}
+	public Book(int i, int j, int k, String string, String string2, String string3, String string4, String string5,
+			boolean b, String string6, String string7) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getBookId() {
 		return bookId;
 	}
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
-	public int getBorrowerId() {
-		return borrowerId;
+	public String getBorrowerName() {
+		return borrowerName;
 	}
-	public void setBorrowerId(int borrowerId) {
-		this.borrowerId = borrowerId;
+	public void setBorrowerName(String borrowerName) {
+		this.borrowerName = borrowerName;
 	}
-	public int getOwnerId() {
-		return ownerId;
+	public String getOwnerName() {
+		return ownerName;
 	}
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 	public String getBookAuthor() {
 		return bookAuthor;
@@ -75,20 +82,19 @@ public class Book {
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
 	}
-	/*
-	public DateTimeFormat getTimeBorrowed() {
+	
+	public String getTimeBorrowed() {
 		return timeBorrowed;
 	}
-	public void setTimeBorrowed(DateTimeFormat timeBorrowed) {
+	public void setTimeBorrowed(String timeBorrowed) {
 		this.timeBorrowed = timeBorrowed;
 	}
-	public DateTimeFormat getTimereturned() {
+	public String getTimereturned() {
 		return timereturned;
 	}
-	public void setTimereturned(DateTimeFormat timereturned) {
+	public void setTimereturned(String timereturned) {
 		this.timereturned = timereturned;
 	}
-	*/
 	
 	/*
 	public ModelAndView viewBookStatus() {

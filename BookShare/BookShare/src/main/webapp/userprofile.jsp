@@ -11,5 +11,9 @@
 	${userEmail}
 	${userAddress}
 	${userPhoneNumber}
+	<form action="toChangePass">
+		<input type="hidden" id="custId" name="userName" value=${userName}>
+		<button type="submit">Change Password</button>
+	</form>
 </body>
 </html>

@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.BookShare.dao.BookRepo;
 import com.example.BookShare.model.Book;
@@ -21,21 +23,50 @@ public class BookController {
 	BookRepo bookrepo;
 
 	@RequestMapping("/addBook")
-	public String addBook(Book book, @RequestParam("userName")String userName) 
+	public ModelAndView addBook(Book book, @RequestParam("userName")String userName) 
 	{
 		book.setAvailability(true);
 		book.setOwnerName(userName);
 		book.setBorrowerName("N/A");
 		book.setTimeBorrowed("01012022");
 		book.setTimereturned("N/A");
-		System.out.println(userName);
 		bookrepo.save(book);
-		return "dashboard.jsp";
+		ModelAndView modelAndView = new ModelAndView("dashboard.jsp");
+	    modelAndView.addObject("userName", userName);
+	    return modelAndView;
 	}
 	
-	@GetMapping("/yourBooks")
-	public String getBooks(Model model) 
+	@RequestMapping("/searchBook")
+	public ModelAndView searchBookPage(@RequestParam("bookTitle")String bookTitle) 
 	{
-		return "yourbooks.jsp";
+		System.out.println("book title");
+		List<Book> b =(List<Book>) bookrepo.findAllByBookTitle(bookTitle);
+		System.out.println(bookrepo.findAllByBookTitle(bookTitle));
+		System.out.println("Done");
+		ModelAndView modelAndView = new ModelAndView("searchbook.jsp");
+	    modelAndView.addObject("bookList", b);
+	    return modelAndView;
+	}
+	
+	@GetMapping("/ownedBooks")
+	@ResponseBody
+	public ModelAndView ownedBooks(@RequestParam("userName")String userName) 
+	{
+		List<Book> b = bookrepo.findAllByOwnerName(userName);
+		System.out.println(bookrepo.findAllByOwnerName(userName));
+		ModelAndView modelAndView = new ModelAndView("ownedbooks.jsp");
+	    modelAndView.addObject("bookList", b);
+	    return modelAndView;
+	}
+	
+	@GetMapping("/borrowedBooks")
+	@ResponseBody
+	public ModelAndView borrowedBooks(@RequestParam("userName")String userName) 
+	{
+		List<Book> b = bookrepo.findAllByBorrowerName(userName);
+		System.out.println(bookrepo.findAllByBorrowerName(userName));
+		ModelAndView modelAndView = new ModelAndView("borrowedbooks.jsp");
+	    modelAndView.addObject("bookList", b);
+	    return modelAndView;
 	}
 }

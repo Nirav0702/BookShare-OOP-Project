@@ -7,16 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
-		<input type="text" placeholder="Enter Book" name="bookName" required>
-  		<button formaction="searchbook.jsp">Search books</button>
+	<form action="searchBook">
+		<input type="text" placeholder="Enter Book" name="bookTitle" required>
+  		<button type="submit">Search books</button>
 	</form>
 	<form action="xyz">
 		<input type="hidden" id="custId" name="userName" value=${userName}>
 		<button type="submit">Add a book</button>
 	</form>
-	<form>
-  		<button formaction="ownedbooks.jsp">Show owned books</button>
+	<form action="ownedBooks">
+		<input type="hidden" id="custId" name="userName" value=${userName}>
+  		<button >Show owned books</button>
+	</form>
+	<form action="borrowedBooks">
+		<input type="hidden" id="custId" name="userName" value=${userName}>
+  		<button >Show lent books</button>
 	</form>
 	<form action="userprofile">
 		<input type="hidden" id="custId" name="userName" value=${userName}>

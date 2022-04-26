@@ -10,80 +10,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
-		<tr>
-			<td>
-				<table border="1">
-							<c:forTokens items = "${bookTitle}" delims="," var = "book">
-							<tr>
-								<td>${book}</td>
-							</tr>
-					    	</c:forTokens>
-				</table>
-			</td>
-			<td>
-				<table border="1">
-					<c:forTokens items = "${bookAuthor}" delims="," var = "book">
-					<tr>
-						<td>${book}</td>
-					</tr>
-			    	</c:forTokens>
-				</table>
-			</td>
-			<td>
-				<table border="1">
-							<c:forTokens items = "${bookPublisher}" delims="," var = "book">
-							<tr>
-								<td>${book}</td>
-							</tr>
-					    	</c:forTokens>
-				</table>
-			</td>
-			<td>
-				<table border="1">
-							<c:forTokens items = "${bookYear}" delims="," var = "book">
-							<tr>
-								<td>${book}</td>
-							</tr>
-					    	</c:forTokens>
-				</table>
-			</td>
-			<td>
-				<table border="1">
-					<c:forTokens items = "${bookEdition}" delims="," var = "book">
-					<tr>
-						<td>${book}</td>
-					</tr>
-			    	</c:forTokens>
-				</table>
-			</td>
-			<td>
-				<table border="1">
-							<c:forTokens items = "${bookOwnerName}" delims="," var = "book">
-							<tr>
-								<td>${book}</td>
-								<td>
-									<form action="borrowThisBook">
-										<input type="hidden" id="custId" name="bookOwnerName" value=${book}>
-										<button type="submit">Borrow Book</button>
-									</form>
-								</td>
-							</tr>
-					    	</c:forTokens>
-				</table>
-			</td>
-			<td>
-				<table border="1">
-							<c:forTokens items = "${bookBorrowerName}" delims="," var = "book">
-							<tr>
-								<td>${book}</td>
-							</tr>
-					    	</c:forTokens>
-				</table>
-			</td>
-		</tr>
-	</table>
-	
-				
+	<table border="1">
+			<tr>
+			    <th>Book Title</th>
+			    <th>Book Author</th>
+			    <th>Book Publisher</th>
+			    <th>Book Edition</th>
+			    <th>Book Year</th>
+			    <th>Book Owner</th>
+			</tr>
+			<c:forEach var="book" items="${searchedbooks}">
+				<tr>
+					<td>${book.bookTitle}</td>
+					<td>${book.bookAuthor}</td>
+					<td>${book.bookPublisher}</td>
+					<td>${book.bookEdition}</td>
+					<td>${book.bookYear}</td>
+					<td>${book.ownerName}</td>
+					<td>${book.bookId}</td>
+					<td>
+						<form action="borrowThisBook">
+							<input type="hidden" id="custId" name="bookId" value=${book.bookId}>
+							<button type="submit">Borrow This Book</button>
+						</form>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>				
 </body>
 </html>

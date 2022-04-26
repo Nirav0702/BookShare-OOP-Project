@@ -10,8 +10,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forTokens items = "${bookList}" delims="," var = "book">
-         <c:out value = "${book}"/><p>
-      </c:forTokens>
+	<table border="1">
+			<tr>
+			    <th>Book Title</th>
+			    <th>Book Author</th>
+			    <th>Book Publisher</th>
+			    <th>Book Edition</th>
+			    <th>Book Year</th>
+			    <th>Book Owner</th>
+			</tr>
+			<c:forEach var="book" items="${borrowedbooks}">
+				<tr>
+					<td>${book.bookTitle}</td>
+					<td>${book.bookAuthor}</td>
+					<td>${book.bookPublisher}</td>
+					<td>${book.bookEdition}</td>
+					<td>${book.bookYear}</td>
+					<td>${book.ownerName}</td>
+					<td>${book.bookId}</td>
+				</tr>
+			</c:forEach>
+		</table>
 </body>
 </html>

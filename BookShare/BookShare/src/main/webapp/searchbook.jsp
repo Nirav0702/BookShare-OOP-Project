@@ -10,8 +10,80 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forTokens items = "${bookList}" delims="," var = "book">
-         <c:out value = "${book}"/><p>
-      </c:forTokens>
+	<table>
+		<tr>
+			<td>
+				<table border="1">
+							<c:forTokens items = "${bookTitle}" delims="," var = "book">
+							<tr>
+								<td>${book}</td>
+							</tr>
+					    	</c:forTokens>
+				</table>
+			</td>
+			<td>
+				<table border="1">
+					<c:forTokens items = "${bookAuthor}" delims="," var = "book">
+					<tr>
+						<td>${book}</td>
+					</tr>
+			    	</c:forTokens>
+				</table>
+			</td>
+			<td>
+				<table border="1">
+							<c:forTokens items = "${bookPublisher}" delims="," var = "book">
+							<tr>
+								<td>${book}</td>
+							</tr>
+					    	</c:forTokens>
+				</table>
+			</td>
+			<td>
+				<table border="1">
+							<c:forTokens items = "${bookYear}" delims="," var = "book">
+							<tr>
+								<td>${book}</td>
+							</tr>
+					    	</c:forTokens>
+				</table>
+			</td>
+			<td>
+				<table border="1">
+					<c:forTokens items = "${bookEdition}" delims="," var = "book">
+					<tr>
+						<td>${book}</td>
+					</tr>
+			    	</c:forTokens>
+				</table>
+			</td>
+			<td>
+				<table border="1">
+							<c:forTokens items = "${bookOwnerName}" delims="," var = "book">
+							<tr>
+								<td>${book}</td>
+								<td>
+									<form action="borrowThisBook">
+										<input type="hidden" id="custId" name="bookOwnerName" value=${book}>
+										<button type="submit">Borrow Book</button>
+									</form>
+								</td>
+							</tr>
+					    	</c:forTokens>
+				</table>
+			</td>
+			<td>
+				<table border="1">
+							<c:forTokens items = "${bookBorrowerName}" delims="," var = "book">
+							<tr>
+								<td>${book}</td>
+							</tr>
+					    	</c:forTokens>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+				
 </body>
 </html>

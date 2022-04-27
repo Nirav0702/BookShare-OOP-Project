@@ -1,0 +1,8 @@
+insert into book values (1, true, 'Dan Brown', '1st', 'GodValley', 'Angels and Demons', '2010', null, 'Nirav1', null, null) 
+insert into book values (2, true, 'Tom', '4th', 'GodValley', 'Thomas', '2001', null, 'Nairr', null, null) 
+insert into book values (3, true, 'Dan Brown', '2nd', 'GodValley', 'Angels and Demons', '2011', null, 'Nirav1', null, null) 
+insert into book values (4, true, 'Nair', '8th', 'GodValley', 'Mallu Masalas', '2014', null, 'Nairr', null, null) 
+insert into book values (5, true, 'Nirav', '7th', 'GodValley', 'Gujju Gulab Jaam', '2015', null, 'Nirav1', null, null) 
+insert into book values (6, true, 'Vinay', '5th', 'GodValley', 'Beech ka chaka', '2016', null, 'Nairr', null, null) 
+insert into book values (7, true, 'Keshava', '3rd', 'GodValley', 'Hyderabadi Halwas', '2013', null, 'Nirav1', null, null) 
+insert into book values (8, true, 'Dan Brown', '3rd', 'GodValley', 'Angels and Demons', '2012', null, 'Nirav1', null, null) 

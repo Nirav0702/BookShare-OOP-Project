@@ -33,7 +33,7 @@ public class WalletController {
 	@RequestMapping("/viewWallet")
 	public ModelAndView searchBook(@RequestParam("userName")String userName) 
 	{
-		List<Wallet> wallet = walletrepo.findByuserName(userName);
+	    Wallet wallet = walletrepo.findByuserName(userName);
 	    ModelAndView modelAndView = new ModelAndView("wallet.jsp");
 	    modelAndView.addObject("wallet", wallet);
 	    return modelAndView;

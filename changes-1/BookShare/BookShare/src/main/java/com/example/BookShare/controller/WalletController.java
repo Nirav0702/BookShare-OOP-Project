@@ -1,4 +1,4 @@
-package com.bookshare.app.controller;
+package com.example.BookShare.controller;
 
 import java.util.List;
 
